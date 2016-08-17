@@ -13,6 +13,14 @@ class StackReviewTests: XCTestCase {
     
     let pancakeCollection = PancakeHouseCollection()
     
+    //1 create a pancake
+    let pancake = PancakeHouse(dict:[
+        "name": "Test Pancake House",
+        "priceGuide": 0, //PriceGuide.High,
+        "details": "Test detail",
+        "rating": 1000   //PancakeRating()
+        ])
+    
     override func setUp() {
         super.setUp()
         pancakeCollection.loadTestData()
@@ -28,14 +36,6 @@ class StackReviewTests: XCTestCase {
     }
     
     func testAddPancakeToTheCollection() {
-        //1 create a pancake
-        let pancake = PancakeHouse(dict:[
-            "name": "Test Pancake House",
-            "priceGuide": 0, //PriceGuide.High,
-            "details": "Test detail",
-            "rating": 1000   //PancakeRating()
-            ])
-        
         //2 save the number of pancakes in the collection
         let startCount = pancakeCollection.count
         
@@ -43,7 +43,26 @@ class StackReviewTests: XCTestCase {
         pancakeCollection.addPancakeHouse(pancake!)
         
         //4 compare the quantity of pancakes before and after
-        XCTAssertEqual(pancakeCollection.count, startCount + 1, "addPancakeHouse function is not adding pancakes to the collection")
+        XCTAssertEqual(pancakeCollection.count, startCount + 1, "addPancakeHouse() is not adding a pancake to the collection")
+    }
+    
+    /*
+     two things to test 
+     1 remove pancake if it is not the favorite
+     2 do not remove the pancake if it is the favorite
+     */
+    func testRemoveNonFavoritePancakeFromCollection() {
+        //1 add the pancake to the collection
+        pancakeCollection.addPancakeHouse(pancake!)
+        
+        //2 save the number of pancakes in the collection
+        let startCount = pancakeCollection.count
+     
+        //3 remove the pancake 
+        pancakeCollection.removePancakeHouse(pancake!)
+        
+        //4 compare the quantity of pancakes before and after
+        XCTAssertEqual(pancakeCollection.count, startCount - 1, "removePancakeHouse() is not removing a pancake from the collection")
         
     }
 }
