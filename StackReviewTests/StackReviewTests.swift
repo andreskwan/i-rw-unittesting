@@ -15,7 +15,7 @@ class StackReviewTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        pancakeCollection.loadTestData()
     }
     
     override func tearDown() {
@@ -24,15 +24,17 @@ class StackReviewTests: XCTestCase {
     }
     
     func testCollectionHasPancakes() {
-        //this line is placed on the setUp() method, is needed
-        pancakeCollection.loadTestData()
         XCTAssertGreaterThan(pancakeCollection.count, 0, "pancake collection didn't have at least one pancake!")
     }
     
     func textAddPancakeToTheCollection() {
-        //0 load collection with test data 
-        
         //1 create a pancake
+        let pancake = PancakeHouse(dict:[
+            "name": "Test Pancake House",
+            "priceGuide": 0, //PriceGuide.High,
+            "details": "Test detail",
+            "rating": 1000   //PancakeRating()
+            ])
         
         //2 save the number of pancakes in the collection
         
