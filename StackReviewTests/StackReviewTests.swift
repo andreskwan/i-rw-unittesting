@@ -24,6 +24,8 @@ class StackReviewTests: XCTestCase {
     }
     
     func testCollectionHasPancakes() {
+        //this line is placed on the setUp() method, is needed 
+        pancakeCollection.loadTestData()
         XCTAssert(pancakeCollection.count > 0)
     }
 }
