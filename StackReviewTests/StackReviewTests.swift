@@ -28,4 +28,17 @@ class StackReviewTests: XCTestCase {
         pancakeCollection.loadTestData()
         XCTAssertGreaterThan(pancakeCollection.count, 0, "pancake collection didn't have at least one pancake!")
     }
+    
+    func textAddPancakeToTheCollection() {
+        //0 load collection with test data 
+        
+        //1 create a pancake
+        
+        //2 save the number of pancakes in the collection
+        
+        //3 add the pancake to the collection
+        
+        //4 compare the quantity of pancakes before and after
+        
+    }
 }
