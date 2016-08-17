@@ -69,7 +69,7 @@ class AboutViewController: UIViewController {
     
     let axisButton = UIButton(type: .RoundedRect)
     axisButton.setTitle("Axis Switch", forState: .Normal)
-    axisButton.addTarget(self, action: "switchCopyrightAxis", forControlEvents: .TouchUpInside)
+    axisButton.addTarget(self, action: #selector(AboutViewController.switchCopyrightAxis), forControlEvents: .TouchUpInside)
     
     let textStackView = UIStackView(arrangedSubviews: [copyrightLabel, axisButton])
     textStackView.axis = .Vertical
