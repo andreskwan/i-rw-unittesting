@@ -52,14 +52,14 @@ class StackReviewTests: XCTestCase {
      2 do not remove the pancake if it is the favorite
      */
     func testRemoveNonFavoritePancakeFromCollection() {
-        //1 add the pancake to the collection
-        pancakeCollection.addPancakeHouse(pancake!)
-        
-        //2 save the number of pancakes in the collection
+        //1 save the number of pancakes in the collection
         let startCount = pancakeCollection.count
-     
+        
+        //2 take a pancake from the collection
+        let pancakeToRemove = pancakeCollection[0]
+        
         //3 remove the pancake 
-        pancakeCollection.removePancakeHouse(pancake!)
+        pancakeCollection.removePancakeHouse(pancakeToRemove)
         
         //4 compare the quantity of pancakes before and after
         XCTAssertEqual(pancakeCollection.count, startCount - 1, "removePancakeHouse() is not removing a pancake from the collection")
