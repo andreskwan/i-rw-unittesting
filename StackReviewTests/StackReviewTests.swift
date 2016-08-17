@@ -7,8 +7,11 @@
 //
 
 import XCTest
+@testable import StackReview
 
 class StackReviewTests: XCTestCase {
+    
+    let pancakeCollection = PancakeHouseCollection()
     
     override func setUp() {
         super.setUp()
