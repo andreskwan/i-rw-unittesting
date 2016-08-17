@@ -43,7 +43,7 @@ class StackReviewTests: XCTestCase {
         pancakeCollection.addPancakeHouse(pancake!)
         
         //4 compare the quantity of pancakes before and after
-        XCTAssertGreaterThan(pancakeCollection.count, startCount, "addPancakeHouse function is not adding pancakes to the collection")
+        XCTAssertEqual(pancakeCollection.count, startCount + 1, "addPancakeHouse function is not adding pancakes to the collection")
         
     }
 }
