@@ -23,4 +23,7 @@ class StackReviewTests: XCTestCase {
         super.tearDown()
     }
     
+    func testCollectionHasPancakes() {
+        XCTAssert(pancakeCollection.count > 0)
+    }
 }
