@@ -65,4 +65,18 @@ class StackReviewTests: XCTestCase {
         XCTAssertEqual(pancakeCollection.count, startCount - 1, "removePancakeHouse() is not removing a pancake from the collection")
         
     }
+    /*
+     
+     */
+    func testCloudLoadFails() {
+        //Async call 
+        // trailing closure syntax
+        pancakeCollection.loadCloudTestData { (didReceiveData) in
+            // we are not login so it should be false
+            // but tests success, it doesn't matter if assertion if false or true
+            // because it returns inmidiately so the block is never executed 
+            // if I add a breakpoint never stops on it.
+            XCTAssertFalse(didReceiveData)
+        }
+    }
 }
