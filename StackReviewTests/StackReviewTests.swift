@@ -27,7 +27,7 @@ class StackReviewTests: XCTestCase {
         XCTAssertGreaterThan(pancakeCollection.count, 0, "pancake collection didn't have at least one pancake!")
     }
     
-    func textAddPancakeToTheCollection() {
+    func testAddPancakeToTheCollection() {
         //1 create a pancake
         let pancake = PancakeHouse(dict:[
             "name": "Test Pancake House",
@@ -37,10 +37,13 @@ class StackReviewTests: XCTestCase {
             ])
         
         //2 save the number of pancakes in the collection
+        let startCount = pancakeCollection.count
         
         //3 add the pancake to the collection
+        pancakeCollection.addPancakeHouse(pancake!)
         
         //4 compare the quantity of pancakes before and after
+        XCTAssertGreaterThan(pancakeCollection.count, startCount, "addPancakeHouse function is not adding pancakes to the collection")
         
     }
 }
