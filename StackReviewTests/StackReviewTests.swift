@@ -139,16 +139,15 @@ class StackReviewTests: XCTestCase {
         XCTAssertFalse(pancakeCollection.isFavorite(noFavoritePancake))
     }
     
-    func testPancakeIsNotFavorite() {
-        //1 must set a pancake in the collection as favorite
-        //2 validate if other pancake is favorite must be false
-        
-    }
-    
-    func testPancakeIsFavorite() {
-        //1 must set a pancake in the collection as favorite
-        //2 validate if that favorite pancake is recognized as the favorite
-        
+    func testSetFavoriteNotInCollection() {
+        let favoritePancake = pancakeCollection[0]
+        pancakeCollection.removePancakeHouse(favoritePancake)
+        pancakeCollection.favorite = favoritePancake
+        XCTAssertNil(pancakeCollection.favorite)
+        // validates if the favorite set is the
+        if let favorite = pancakeCollection.favorite {
+            XCTAssertTrue(pancakeCollection.isFavorite(favorite))
+        }
     }
 }
 
