@@ -65,6 +65,16 @@ class StackReviewTests: XCTestCase {
         XCTAssertEqual(pancakeCollection.count, startCount - 1, "removePancakeHouse() is not removing a pancake from the collection")
         
     }
+    
+    func testTemoveFavoritePancakeFromCollection() {
+        let favoritePancake = pancakeCollection[0]
+        pancakeCollection.favorite = favoritePancake
+        pancakeCollection.removePancakeHouse(favoritePancake)
+        XCTAssertNotNil(pancakeCollection.favorite)
+        XCTAssertTrue(pancakeCollection.isFavorite(favoritePancake))
+        XCTAssertEqual(pancakeCollection[0], favoritePancake)
+    }
+    
     /*
      
      */
