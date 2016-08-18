@@ -95,11 +95,30 @@ class StackReviewTests: XCTestCase {
      we need a mock, why? because we don't have access to the cloud, we need a logged in user
      */
     func testCloudLoadSuccess() {
+        // reasonably good solution for when some clever overriding can do enough to simulate certain conditions and behaviors.
         class MockPancakeHouseCollection: PancakeHouseCollection {
             override var isCloudCollection: Bool {
                 //now it seems that there is a logged in user
                 return true
             }
         }
+        // create an instance of the mock
+        let mockCollection = MockPancakeHouseCollection()
+        //Async call
+        // 1 add expectations
+        let expectation = expectationWithDescription("Expecting clud data call to fail")
+        // 2 add async call
+        mockCollection.loadCloudTestData { (didReceiveData) -> () in
+            if didReceiveData {
+                // the thing that we expected, actually happened
+                expectation.fulfill()
+            } else {
+                //not what we want
+                //so always fails
+                XCTFail()
+            }
+        }
+        waitForExpectationsWithTimeout(3, handler: nil)
+        
     }
 }
