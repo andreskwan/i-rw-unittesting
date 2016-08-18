@@ -90,5 +90,16 @@ class StackReviewTests: XCTestCase {
         waitForExpectationsWithTimeout(3, handler: nil)
     }
     
-    
+    /*
+     To testCloudLoadSuccess()
+     we need a mock, why? because we don't have access to the cloud, we need a logged in user
+     */
+    func testCloudLoadSuccess() {
+        class MockPancakeHouseCollection: PancakeHouseCollection {
+            override var isCloudCollection: Bool {
+                //now it seems that there is a logged in user
+                return true
+            }
+        }
+    }
 }
