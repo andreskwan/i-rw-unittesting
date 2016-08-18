@@ -70,13 +70,25 @@ class StackReviewTests: XCTestCase {
      */
     func testCloudLoadFails() {
         //Async call 
-        // trailing closure syntax
-        pancakeCollection.loadCloudTestData { (didReceiveData) in
-            // we are not login so it should be false
-            // but tests success, it doesn't matter if assertion if false or true
-            // because it returns inmidiately so the block is never executed 
-            // if I add a breakpoint never stops on it.
-            XCTAssertFalse(didReceiveData)
+        // 1 add expectations
+        let expectation = expectationWithDescription("Expecting clud data call to fail")
+        // 2 add async call
+        pancakeCollection.loadCloudTestData { (didReceiveData) -> () in
+            if didReceiveData {
+                //not what we want 
+                //so always fails
+                XCTFail()
+            } else {
+                // the thing that we expected, actually happened
+                expectation.fulfill()
+            }
         }
+        // at this point the method concludes, that is why we need to wait 
+        // 3sec
+        // in the "handler" I could review what is coming
+        // so we can add more assertions
+        waitForExpectationsWithTimeout(3, handler: nil)
     }
+    
+    
 }
