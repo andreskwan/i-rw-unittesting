@@ -119,6 +119,15 @@ class StackReviewTests: XCTestCase {
             }
         }
         waitForExpectationsWithTimeout(3, handler: nil)
-        
     }
 }
+
+// MARK: Performance test
+extension StackReviewTests {
+    func testPerformanceLoadDataTime() {
+        measureBlock { 
+            self.pancakeCollection.loadTestData()
+        }
+    }
+}
+    
