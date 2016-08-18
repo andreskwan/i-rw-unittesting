@@ -120,6 +120,36 @@ class StackReviewTests: XCTestCase {
         }
         waitForExpectationsWithTimeout(3, handler: nil)
     }
+    
+    func testCollectionDoesNotHaveAFavoritePancake() {
+        //if favorite is nil, there is not a favorite pancake 
+        //this test the getter
+        XCTAssertNil(pancakeCollection.favorite)
+    }
+    
+    func testCollectionHasAFavoritePancake() {
+        //if favorite is nil, there is not a favorite pancake
+        //this test the setter
+        let favoritePancake = pancakeCollection[0]
+        let noFavoritePancake = pancakeCollection[1]
+        pancakeCollection.favorite = favoritePancake
+        //asumes that I could compare two pancakes
+//        XCTAssertTrue((pancakeCollection.favorite) == favoritePancake)
+        XCTAssertTrue(pancakeCollection.isFavorite(favoritePancake))
+        XCTAssertFalse(pancakeCollection.isFavorite(noFavoritePancake))
+    }
+    
+    func testPancakeIsNotFavorite() {
+        //1 must set a pancake in the collection as favorite
+        //2 validate if other pancake is favorite must be false
+        
+    }
+    
+    func testPancakeIsFavorite() {
+        //1 must set a pancake in the collection as favorite
+        //2 validate if that favorite pancake is recognized as the favorite
+        
+    }
 }
 
 // MARK: Performance test
