@@ -29,4 +29,15 @@ class StackReviewUITests: XCTestCase {
         super.tearDown()
     }
     
+    func testAboutButton() {
+        let mainLandingTitleLabel = app.navigationBars.staticTexts["StackReview"]
+        XCTAssertTrue(mainLandingTitleLabel.exists, "Should be on the start screen")
+//        app.buttons["About"].tap()
+        app.navigationBars.buttons["About"].tap()
+        
+        let aboutViewTitleLabel = app.navigationBars.staticTexts["About"]
+        XCTAssertTrue(aboutViewTitleLabel.exists, "Should be on the about screen")
+        
+    }
+    
 }
