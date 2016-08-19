@@ -54,7 +54,7 @@ class StackReviewUITests: XCTestCase {
         //this tap() takes me to the detail, that's why I can assert the value of cell after
         //taped because it's gone!
         cellStackThemHigh.tap()
-        
+        XCTAssertEqual(cellStackThemHigh.exists, false, "Should not exits, now we are in the detail view")
         //don't work
         //        table.buttons["Stack 'em High"].tap()
         let detailButtonTitle = app.buttons["Hide Details"]
