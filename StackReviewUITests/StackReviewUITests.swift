@@ -40,4 +40,18 @@ class StackReviewUITests: XCTestCase {
         
     }
     
+    /*
+     Testing the maser-detail segue
+     - tap on a row, and then go to the dail screen
+     */
+    func testMasterDetailSegueFromTableRowToDetailView() {
+        let mainLandingTitleLabel = app.navigationBars.staticTexts["StackReview"]
+        XCTAssertTrue(mainLandingTitleLabel.exists, "Should be on the start screen")
+        
+        let table = app.tables
+        table.staticTexts["Stack 'em High"].tap()
+        table.cells.staticTexts["Stack 'em High"].tap()
+        
+        
+    }
 }
