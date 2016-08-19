@@ -22,10 +22,18 @@
 		22BC601F1B441C9500D3ECDC /* ImageAttributions.txt in Resources */ = {isa = PBXBuildFile; fileRef = 22BC601E1B441C9500D3ECDC /* ImageAttributions.txt */; };
 		787C1FC91BB3AC5E000B7EA1 /* PancakeHouseCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787C1FC81BB3AC5E000B7EA1 /* PancakeHouseCollection.swift */; };
 		EAB0C1B81D64788F00A3EA98 /* StackReviewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB0C1B71D64788F00A3EA98 /* StackReviewTests.swift */; };
+		F498FB1B1D668BD00010C83B /* StackReviewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F498FB1A1D668BD00010C83B /* StackReviewUITests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		EAB0C1BA1D64788F00A3EA98 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 22A7E5621B3AE0E600F269A3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 22A7E5691B3AE0E600F269A3;
+			remoteInfo = StackReview;
+		};
+		F498FB1D1D668BD00010C83B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 22A7E5621B3AE0E600F269A3 /* Project object */;
 			proxyType = 1;
@@ -54,6 +62,9 @@
 		EAB0C1B51D64788F00A3EA98 /* StackReviewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StackReviewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAB0C1B71D64788F00A3EA98 /* StackReviewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackReviewTests.swift; sourceTree = "<group>"; };
 		EAB0C1B91D64788F00A3EA98 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F498FB181D668BD00010C83B /* StackReviewUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StackReviewUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F498FB1A1D668BD00010C83B /* StackReviewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackReviewUITests.swift; sourceTree = "<group>"; };
+		F498FB1C1D668BD00010C83B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +76,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		EAB0C1B21D64788F00A3EA98 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F498FB151D668BD00010C83B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -87,6 +105,7 @@
 			children = (
 				22A7E56C1B3AE0E600F269A3 /* StackReview */,
 				EAB0C1B61D64788F00A3EA98 /* StackReviewTests */,
+				F498FB191D668BD00010C83B /* StackReviewUITests */,
 				22A7E56B1B3AE0E600F269A3 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -96,6 +115,7 @@
 			children = (
 				22A7E56A1B3AE0E600F269A3 /* StackReview.app */,
 				EAB0C1B51D64788F00A3EA98 /* StackReviewTests.xctest */,
+				F498FB181D668BD00010C83B /* StackReviewUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -155,6 +175,15 @@
 			path = StackReviewTests;
 			sourceTree = "<group>";
 		};
+		F498FB191D668BD00010C83B /* StackReviewUITests */ = {
+			isa = PBXGroup;
+			children = (
+				F498FB1A1D668BD00010C83B /* StackReviewUITests.swift */,
+				F498FB1C1D668BD00010C83B /* Info.plist */,
+			);
+			path = StackReviewUITests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -193,6 +222,24 @@
 			productReference = EAB0C1B51D64788F00A3EA98 /* StackReviewTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		F498FB171D668BD00010C83B /* StackReviewUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F498FB211D668BD00010C83B /* Build configuration list for PBXNativeTarget "StackReviewUITests" */;
+			buildPhases = (
+				F498FB141D668BD00010C83B /* Sources */,
+				F498FB151D668BD00010C83B /* Frameworks */,
+				F498FB161D668BD00010C83B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F498FB1E1D668BD00010C83B /* PBXTargetDependency */,
+			);
+			name = StackReviewUITests;
+			productName = StackReviewUITests;
+			productReference = F498FB181D668BD00010C83B /* StackReviewUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -207,6 +254,10 @@
 						CreatedOnToolsVersion = 7.0;
 					};
 					EAB0C1B41D64788F00A3EA98 = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = 22A7E5691B3AE0E600F269A3;
+					};
+					F498FB171D668BD00010C83B = {
 						CreatedOnToolsVersion = 7.3.1;
 						TestTargetID = 22A7E5691B3AE0E600F269A3;
 					};
@@ -227,6 +278,7 @@
 			targets = (
 				22A7E5691B3AE0E600F269A3 /* StackReview */,
 				EAB0C1B41D64788F00A3EA98 /* StackReviewTests */,
+				F498FB171D668BD00010C83B /* StackReviewUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -245,6 +297,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		EAB0C1B31D64788F00A3EA98 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F498FB161D668BD00010C83B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -278,6 +337,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F498FB141D668BD00010C83B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F498FB1B1D668BD00010C83B /* StackReviewUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -285,6 +352,11 @@
 			isa = PBXTargetDependency;
 			target = 22A7E5691B3AE0E600F269A3 /* StackReview */;
 			targetProxy = EAB0C1BA1D64788F00A3EA98 /* PBXContainerItemProxy */;
+		};
+		F498FB1E1D668BD00010C83B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 22A7E5691B3AE0E600F269A3 /* StackReview */;
+			targetProxy = F498FB1D1D668BD00010C83B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -441,6 +513,32 @@
 			};
 			name = Release;
 		};
+		F498FB1F1D668BD00010C83B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				INFOPLIST_FILE = StackReviewUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = kwan.orjuela.andres.com.StackReviewUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = StackReview;
+			};
+			name = Debug;
+		};
+		F498FB201D668BD00010C83B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				INFOPLIST_FILE = StackReviewUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = kwan.orjuela.andres.com.StackReviewUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = StackReview;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -467,6 +565,15 @@
 			buildConfigurations = (
 				EAB0C1BC1D64788F00A3EA98 /* Debug */,
 				EAB0C1BD1D64788F00A3EA98 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F498FB211D668BD00010C83B /* Build configuration list for PBXNativeTarget "StackReviewUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F498FB1F1D668BD00010C83B /* Debug */,
+				F498FB201D668BD00010C83B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
