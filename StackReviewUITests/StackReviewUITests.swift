@@ -49,9 +49,15 @@ class StackReviewUITests: XCTestCase {
         XCTAssertTrue(mainLandingTitleLabel.exists, "Should be on the start screen")
         
         let table = app.tables
-        table.staticTexts["Stack 'em High"].tap()
-        table.cells.staticTexts["Stack 'em High"].tap()
+//        table.staticTexts["Stack 'em High"].tap()
+        let cellStackThemHigh = table.cells.staticTexts["Stack 'em High"]
+        //this tap() takes me to the detail, that's why I can assert the value of cell after
+        //taped because it's gone!
+        cellStackThemHigh.tap()
         
-        
+        //don't work
+        //        table.buttons["Stack 'em High"].tap()
+        let detailButtonTitle = app.buttons["Hide Details"]
+        XCTAssertTrue(detailButtonTitle.exists, "Should be on detail view")
     }
 }
