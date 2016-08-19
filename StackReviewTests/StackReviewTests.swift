@@ -65,6 +65,16 @@ class StackReviewTests: XCTestCase {
         XCTAssertEqual(pancakeCollection.count, startCount - 1, "removePancakeHouse() is not removing a pancake from the collection")
         
     }
+    
+    func testTemoveFavoritePancakeFromCollection() {
+        let favoritePancake = pancakeCollection[0]
+        pancakeCollection.favorite = favoritePancake
+        pancakeCollection.removePancakeHouse(favoritePancake)
+        XCTAssertNotNil(pancakeCollection.favorite)
+        XCTAssertTrue(pancakeCollection.isFavorite(favoritePancake))
+        XCTAssertEqual(pancakeCollection[0], favoritePancake)
+    }
+    
     /*
      
      */
@@ -119,6 +129,44 @@ class StackReviewTests: XCTestCase {
             }
         }
         waitForExpectationsWithTimeout(3, handler: nil)
-        
+    }
+    
+    func testCollectionDoesNotHaveAFavoritePancake() {
+        //if favorite is nil, there is not a favorite pancake 
+        //this test the getter
+        XCTAssertNil(pancakeCollection.favorite)
+    }
+    
+    func testCollectionHasAFavoritePancake() {
+        //if favorite is nil, there is not a favorite pancake
+        //this test the setter
+        let favoritePancake = pancakeCollection[0]
+        let noFavoritePancake = pancakeCollection[1]
+        pancakeCollection.favorite = favoritePancake
+        //asumes that I could compare two pancakes
+//        XCTAssertTrue((pancakeCollection.favorite) == favoritePancake)
+        XCTAssertTrue(pancakeCollection.isFavorite(favoritePancake))
+        XCTAssertFalse(pancakeCollection.isFavorite(noFavoritePancake))
+    }
+    
+    func testSetFavoriteNotInCollection() {
+        let favoritePancake = pancakeCollection[0]
+        pancakeCollection.removePancakeHouse(favoritePancake)
+        pancakeCollection.favorite = favoritePancake
+        XCTAssertNil(pancakeCollection.favorite)
+        // validates if the favorite set is the
+        if let favorite = pancakeCollection.favorite {
+            XCTAssertTrue(pancakeCollection.isFavorite(favorite))
+        }
     }
 }
+
+// MARK: Performance test
+extension StackReviewTests {
+    func testPerformanceLoadDataTime() {
+        measureBlock { 
+            self.pancakeCollection.loadTestData()
+        }
+    }
+}
+    

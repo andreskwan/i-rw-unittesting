@@ -100,6 +100,9 @@ class PancakeHouseCollection {
 
   /** Remove a pancake house from the collection. If it's the current favorite, doesn't remove it. */
   func removePancakeHouse(pancakeHouse: PancakeHouse) {
+    if isFavorite(pancakeHouse){
+        return
+    }
     if let index = _pancakeHouses.indexOf(pancakeHouse) {
       _pancakeHouses.removeAtIndex(index)
     }
