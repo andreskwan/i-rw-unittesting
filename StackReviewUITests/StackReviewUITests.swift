@@ -31,14 +31,15 @@ class StackReviewUITests: XCTestCase {
     }
     
     func testAboutButton() {
-        let mainLandingTitleLabel = app.navigationBars.staticTexts["StackReview"]
+        let mainLandingTitleLabel = app.navigationBars["StackReview"]
         XCTAssertTrue(mainLandingTitleLabel.exists, "Should be on the start screen")
-//        app.buttons["About"].tap()
-        app.navigationBars.buttons["About"].tap()
         
-        let aboutViewTitleLabel = app.navigationBars.staticTexts["About"]
-        XCTAssertTrue(aboutViewTitleLabel.exists, "Should be on the about screen")
+        let aboutButton = mainLandingTitleLabel.buttons["About"]
+        aboutButton.tap()
         
+        let aboutTitle = app.navigationBars["About"]
+        let aboutStaticText = aboutTitle.staticTexts["About"]
+        XCTAssertTrue(aboutStaticText.exists, "Should be on the about screen")
     }
     
     /*
@@ -61,7 +62,7 @@ class StackReviewUITests: XCTestCase {
         let detailButtonTitle = app.buttons["Hide Details"]
         XCTAssertTrue(detailButtonTitle.exists, "Should be on detail view")
     }
-    
+
     func testHideMapDetailView() {
 
         XCUIDevice.sharedDevice().orientation = .Portrait
@@ -71,7 +72,7 @@ class StackReviewUITests: XCTestCase {
         let app = XCUIApplication()
         let tablesQuery = app.tables
         //swipeRight is not correct because we are in landscape mode.
-        tablesQuery.staticTexts["Stack 'em High"].swipeRight()
+        tablesQuery.staticTexts["Stack 'em High"].swipeUp()
         tablesQuery.staticTexts["Ye Olde Pancake"].tap()
         app.buttons["Hide Map"].tap()
         
