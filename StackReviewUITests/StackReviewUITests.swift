@@ -74,9 +74,17 @@ class StackReviewUITests: XCTestCase {
         // assert that there is a map 
         let mapQuery = app.maps
         XCTAssertTrue(mapQuery.element.exists, "Map elements should exits in the app")
+        // assert that the map is visible 
+        let mapElement = mapQuery.element
+        let mapIsVisible = mapElement.frame.size.width > 0 ||
+            mapElement.frame.size.height > 0
+        XCTAssertTrue(mapIsVisible)
+        
+        //hide the map
         app.buttons["Hide Map"].tap()
         
         // at this point I should assert that the map is hidden
-        
+        let mapIsHidden = mapElement.frame.size.width == 0 || mapElement.frame.size.height == 0
+        XCTAssertTrue(mapIsHidden,"Map should be hidden")
     }
 }
