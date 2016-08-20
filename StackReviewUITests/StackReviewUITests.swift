@@ -22,7 +22,7 @@ class StackReviewUITests: XCTestCase {
         XCUIApplication().launch()
 
         // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
-        XCUIDevice.sharedDevice().orientation = .Portrait
+//        XCUIDevice.sharedDevice().orientation = .Portrait
     }
     
     override func tearDown() {
@@ -86,5 +86,16 @@ class StackReviewUITests: XCTestCase {
         // at this point I should assert that the map is hidden
         let mapIsHidden = mapElement.frame.size.width == 0 || mapElement.frame.size.height == 0
         XCTAssertTrue(mapIsHidden,"Map should be hidden")
+    }
+    
+    func testShowHideCopyRight() {
+        app.navigationBars["StackReview"].buttons["About"].tap()
+        let rwLogoElement = app.images["rw_logo"]
+        let showHideCopyrightNoticeButton = app.buttons["Show/Hide Copyright Notice"]
+        
+        showHideCopyrightNoticeButton.tap()
+        XCTAssertTrue(rwLogoElement.exists)
+        showHideCopyrightNoticeButton.tap()
+        XCTAssertFalse(rwLogoElement.exists)
     }
 }
