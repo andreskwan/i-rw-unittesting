@@ -64,12 +64,8 @@ class StackReviewUITests: XCTestCase {
     }
 
     func testHideMapDetailView() {
-
-        XCUIDevice.sharedDevice().orientation = .Portrait
-        XCUIDevice.sharedDevice().orientation = .Portrait
         XCUIDevice.sharedDevice().orientation = .LandscapeLeft
         
-        let app = XCUIApplication()
         let tablesQuery = app.tables
         //swipeRight is not correct because we are in landscape mode.
         tablesQuery.staticTexts["Stack 'em High"].swipeUp()

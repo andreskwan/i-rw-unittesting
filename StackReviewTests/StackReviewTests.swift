@@ -66,22 +66,44 @@ class StackReviewTests: XCTestCase {
         
     }
     
-    func testTemoveFavoritePancakeFromCollection() {
+    /*
+     The favorite pancake in the collection can be removed
+     so the collection should be the same
+     */
+    func testRemoveFavoritePancakeFromCollection() {
+        //1 save the number of pancakes in the collection
+        let startCount = pancakeCollection.count
+        
+        //2 take a pancake from the collection
         let favoritePancake = pancakeCollection[0]
+        
+        //3 set the favorite pancake
         pancakeCollection.favorite = favoritePancake
-        pancakeCollection.removePancakeHouse(favoritePancake)
+        
+        //4 assert favorite is set
         XCTAssertNotNil(pancakeCollection.favorite)
+        
+        //5 assert pancake is favorite
         XCTAssertTrue(pancakeCollection.isFavorite(favoritePancake))
+        
+        //6 remove favorite pancake
+        pancakeCollection.removePancakeHouse(favoritePancake)
+        
+        //7 assert that the number of pancakes remains 
+        XCTAssertEqual(startCount, pancakeCollection.count)
+        
+        //8 assert that pancake in the collection is the favorite
         XCTAssertEqual(pancakeCollection[0], favoritePancake)
     }
     
     /*
-     
+     Async Call
+     load data from the cloud should fail because we are not logged in
      */
     func testCloudLoadFails() {
         //Async call 
         // 1 add expectations
-        let expectation = expectationWithDescription("Expecting clud data call to fail")
+        let expectation = expectationWithDescription("Expecting cloud data call to fail")
         // 2 add async call
         pancakeCollection.loadCloudTestData { (didReceiveData) -> () in
             if didReceiveData {
@@ -102,7 +124,8 @@ class StackReviewTests: XCTestCase {
     
     /*
      To testCloudLoadSuccess()
-     we need a mock, why? because we don't have access to the cloud, we need a logged in user
+     we need a mock, why? because we don't have access to the cloud, we need 
+     to fake a logged in user
      */
     func testCloudLoadSuccess() {
         // reasonably good solution for when some clever overriding can do enough to simulate certain conditions and behaviors.
@@ -149,10 +172,14 @@ class StackReviewTests: XCTestCase {
         XCTAssertFalse(pancakeCollection.isFavorite(noFavoritePancake))
     }
     
+    /*
+     Only a pancake in the collection can be favorite
+     */
     func testSetFavoriteNotInCollection() {
         let favoritePancake = pancakeCollection[0]
         pancakeCollection.removePancakeHouse(favoritePancake)
         pancakeCollection.favorite = favoritePancake
+        XCTAssertNotNil(favoritePancake)
         XCTAssertNil(pancakeCollection.favorite)
         // validates if the favorite set is the
         if let favorite = pancakeCollection.favorite {
