@@ -61,4 +61,20 @@ class StackReviewUITests: XCTestCase {
         let detailButtonTitle = app.buttons["Hide Details"]
         XCTAssertTrue(detailButtonTitle.exists, "Should be on detail view")
     }
+    
+    func testHideMapDetailView() {
+
+        XCUIDevice.sharedDevice().orientation = .Portrait
+        XCUIDevice.sharedDevice().orientation = .Portrait
+        XCUIDevice.sharedDevice().orientation = .LandscapeLeft
+        
+        let app = XCUIApplication()
+        let tablesQuery = app.tables
+        //swipeRight is not correct because we are in landscape mode.
+        tablesQuery.staticTexts["Stack 'em High"].swipeRight()
+        tablesQuery.staticTexts["Ye Olde Pancake"].tap()
+        app.buttons["Hide Map"].tap()
+        
+        
+    }
 }
