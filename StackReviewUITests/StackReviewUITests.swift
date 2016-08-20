@@ -70,8 +70,13 @@ class StackReviewUITests: XCTestCase {
         //swipeRight is not correct because we are in landscape mode.
         tablesQuery.staticTexts["Stack 'em High"].swipeUp()
         tablesQuery.staticTexts["Ye Olde Pancake"].tap()
+        
+        // assert that there is a map 
+        let mapQuery = app.maps
+        XCTAssertTrue(mapQuery.element.exists, "Map elements should exits in the app")
         app.buttons["Hide Map"].tap()
         
+        // at this point I should assert that the map is hidden
         
     }
 }
