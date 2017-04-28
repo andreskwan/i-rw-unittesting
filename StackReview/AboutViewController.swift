@@ -28,7 +28,7 @@ class AboutViewController: UIViewController {
   @IBOutlet weak var showHideButton : UIButton!
   @IBOutlet weak var copyrightStackView: UIStackView!
   
-  private var copyrightContentStackView : UIStackView?
+  fileprivate var copyrightContentStackView : UIStackView?
   
   
   override func viewDidLoad() {
@@ -36,23 +36,23 @@ class AboutViewController: UIViewController {
 
     title = "About"
 
-    contentStackView.layoutMarginsRelativeArrangement = true
+    contentStackView.isLayoutMarginsRelativeArrangement = true
     contentStackView.layoutMargins = UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0)
   }
   
   
-  @IBAction func handleShowHideTapped(sender: AnyObject) {
+  @IBAction func handleShowHideTapped(_ sender: AnyObject) {
     if copyrightContentStackView == nil {
       copyrightContentStackView = createCopyrightInfo()
-      copyrightContentStackView?.hidden = true
+      copyrightContentStackView?.isHidden = true
       copyrightStackView.addArrangedSubview(copyrightContentStackView!)
-      UIView.animateWithDuration(1.0) {
-        self.copyrightContentStackView?.hidden = false
-      }
+      UIView.animate(withDuration: 1.0, animations: {
+        self.copyrightContentStackView?.isHidden = false
+      }) 
       
     } else {
-      UIView.animateWithDuration(1.0, animations: {
-          self.copyrightContentStackView?.hidden = true
+      UIView.animate(withDuration: 1.0, animations: {
+          self.copyrightContentStackView?.isHidden = true
         }, completion: { _ in
           self.copyrightContentStackView?.removeFromSuperview()
           self.copyrightContentStackView = nil
@@ -60,27 +60,27 @@ class AboutViewController: UIViewController {
     }
   }
   
-  private func createCopyrightInfo() -> UIStackView {
+  fileprivate func createCopyrightInfo() -> UIStackView {
     let logo = UIImage(named: "rw_logo")
     let logoImageView = UIImageView(image: logo)
     
     let copyrightLabel = UILabel(frame: CGRect.zero)
     copyrightLabel.text = "© Razeware 2015"
     
-    let axisButton = UIButton(type: .RoundedRect)
-    axisButton.setTitle("Axis Switch", forState: .Normal)
-    axisButton.addTarget(self, action: #selector(AboutViewController.switchCopyrightAxis), forControlEvents: .TouchUpInside)
+    let axisButton = UIButton(type: .roundedRect)
+    axisButton.setTitle("Axis Switch", for: UIControlState())
+    axisButton.addTarget(self, action: #selector(AboutViewController.switchCopyrightAxis), for: .touchUpInside)
     
     let textStackView = UIStackView(arrangedSubviews: [copyrightLabel, axisButton])
-    textStackView.axis = .Vertical
+    textStackView.axis = .vertical
     textStackView.spacing = 20.0
-    textStackView.alignment = .Center
+    textStackView.alignment = .center
     
     let stackView = UIStackView(arrangedSubviews: [logoImageView, textStackView])
-    stackView.axis = .Horizontal
+    stackView.axis = .horizontal
     stackView.spacing = 20.0
-    stackView.alignment = .Center
-    stackView.distribution = .EqualSpacing
+    stackView.alignment = .center
+    stackView.distribution = .equalSpacing
     
     return stackView
   }
@@ -93,14 +93,14 @@ class AboutViewController: UIViewController {
     
     let newAxis : UILayoutConstraintAxis
     switch copyrightContentStackView.axis {
-    case .Horizontal:
-      newAxis = .Vertical
-    case .Vertical:
-      newAxis = .Horizontal
+    case .horizontal:
+      newAxis = .vertical
+    case .vertical:
+      newAxis = .horizontal
     }
     
-    UIView.animateWithDuration(0.7) {
+    UIView.animate(withDuration: 0.7, animations: {
       copyrightContentStackView.axis = newAxis
-    }
+    }) 
   }
 }

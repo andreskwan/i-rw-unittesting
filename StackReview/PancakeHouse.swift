@@ -24,38 +24,38 @@ import UIKit
 import CoreLocation
 
 enum PriceGuide : Int {
-  case Unknown = 0
-  case Low = 1
-  case Medium = 2
-  case High = 3
+  case unknown = 0
+  case low = 1
+  case medium = 2
+  case high = 3
 }
 
 extension PriceGuide : CustomStringConvertible {
   var description : String {
     switch self {
-    case .Unknown:
+    case .unknown:
       return "?"
-    case .Low:
+    case .low:
       return "$"
-    case .Medium:
+    case .medium:
       return "$$"
-    case .High:
+    case .high:
       return "$$$"
     }
   }
 }
 
 enum PancakeRating {
-  case Unknown
-  case Rating(Int)
+  case unknown
+  case rating(Int)
 }
 
 extension PancakeRating {
   init?(value: Int) {
     if value > 0 && value <= 5 {
-      self = .Rating(value)
+      self = .rating(value)
     } else {
-      self = .Unknown
+      self = .unknown
     }
   }
 }
@@ -75,11 +75,11 @@ extension PancakeRating {
     return UIImage(named: "\(baseName)_small")
   }
   
-  private var ratingImageName : String? {
+  fileprivate var ratingImageName : String? {
     switch self {
-    case .Unknown:
+    case .unknown:
       return nil
-    case .Rating(let value):
+    case .rating(let value):
       return "pancake_rate_\(value)"
     }
   }
@@ -113,13 +113,13 @@ extension PancakeHouse {
     self.details = details
     self.rating = rating
     
-    if let imageName = dict["imageName"] as? String where !imageName.isEmpty {
+    if let imageName = dict["imageName"] as? String, !imageName.isEmpty {
       photo = UIImage(named: imageName)
     } else {
       photo = nil
     }
     
-    if let thumbnailName = dict["thumbnailName"] as? String where !thumbnailName.isEmpty {
+    if let thumbnailName = dict["thumbnailName"] as? String, !thumbnailName.isEmpty {
       thumbnail = UIImage(named: thumbnailName)
     } else {
       thumbnail = nil
@@ -139,8 +139,8 @@ extension PancakeHouse {
     return self.loadPancakeHousesFromPlistNamed("pancake_houses")
   }
   
-  static func loadPancakeHousesFromPlistNamed(plistName: String) -> [PancakeHouse]? {
-    guard let path = NSBundle.mainBundle().pathForResource(plistName, ofType: "plist"),
+  static func loadPancakeHousesFromPlistNamed(_ plistName: String) -> [PancakeHouse]? {
+    guard let path = Bundle.main.path(forResource: plistName, ofType: "plist"),
       let array = NSArray(contentsOfFile: path) as? [[String : AnyObject]] else {
         return nil
     }

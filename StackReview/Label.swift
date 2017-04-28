@@ -29,14 +29,14 @@ class MultilineLabelThatWorks : UILabel {
     super.layoutSubviews()
   }
   
-  override func textRectForBounds(bounds: CGRect, limitedToNumberOfLines numberOfLines: Int) -> CGRect {
+  override func textRect(forBounds bounds: CGRect, limitedToNumberOfLines numberOfLines: Int) -> CGRect {
     var rect = layoutMargins.apply(bounds)
-    rect = super.textRectForBounds(rect, limitedToNumberOfLines: numberOfLines)
+    rect = super.textRect(forBounds: rect, limitedToNumberOfLines: numberOfLines)
     return layoutMargins.inverse.apply(rect)
   }
   
-  override func drawTextInRect(rect: CGRect) {
-    super.drawTextInRect(layoutMargins.apply(rect))
+  override func drawText(in rect: CGRect) {
+    super.drawText(in: layoutMargins.apply(rect))
   }
 }
 
@@ -44,7 +44,7 @@ extension UIEdgeInsets {
   var inverse : UIEdgeInsets {
     return UIEdgeInsets(top: -top, left: -left, bottom: -bottom, right: -right)
   }
-  func apply(rect: CGRect) -> CGRect {
+  func apply(_ rect: CGRect) -> CGRect {
     return UIEdgeInsetsInsetRect(rect, self)
   }
 }

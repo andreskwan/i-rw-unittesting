@@ -64,7 +64,7 @@ class StackReviewUITests: XCTestCase {
     }
 
     func testHideMapDetailView() {
-        XCUIDevice.sharedDevice().orientation = .LandscapeLeft
+        XCUIDevice.shared().orientation = .landscapeLeft
         
         let tablesQuery = app.tables
         //swipeRight is not correct because we are in landscape mode.

@@ -15,10 +15,10 @@ class StackReviewTests: XCTestCase {
     
     //1 create a pancake
     let pancake = PancakeHouse(dict:[
-        "name": "Test Pancake House",
-        "priceGuide": 0, //PriceGuide.High,
-        "details": "Test detail",
-        "rating": 1000   //PancakeRating()
+        "name": "Test Pancake House" as AnyObject,
+        "priceGuide": 0 as AnyObject, //PriceGuide.High,
+        "details": "Test detail" as AnyObject,
+        "rating": 1000 as AnyObject   //PancakeRating()
         ])
     
     override func setUp() {
@@ -103,7 +103,7 @@ class StackReviewTests: XCTestCase {
     func testCloudLoadFails() {
         //Async call 
         // 1 add expectations
-        let expectation = expectationWithDescription("Expecting cloud data call to fail")
+        let expectation = self.expectation(description: "Expecting cloud data call to fail")
         // 2 add async call
         pancakeCollection.loadCloudTestData { (didReceiveData) -> () in
             if didReceiveData {
@@ -119,7 +119,7 @@ class StackReviewTests: XCTestCase {
         // 3sec
         // in the "handler" I could review what is coming
         // so we can add more assertions
-        waitForExpectationsWithTimeout(3, handler: nil)
+        waitForExpectations(timeout: 3, handler: nil)
     }
     
     /*
@@ -139,7 +139,7 @@ class StackReviewTests: XCTestCase {
         let mockCollection = MockPancakeHouseCollection()
         //Async call
         // 1 add expectations
-        let expectation = expectationWithDescription("Expecting clud data call to fail")
+        let expectation = self.expectation(description: "Expecting clud data call to fail")
         // 2 add async call
         mockCollection.loadCloudTestData { (didReceiveData) -> () in
             if didReceiveData {
@@ -151,7 +151,7 @@ class StackReviewTests: XCTestCase {
                 XCTFail()
             }
         }
-        waitForExpectationsWithTimeout(3, handler: nil)
+        waitForExpectations(timeout: 3, handler: nil)
     }
     
     func testCollectionDoesNotHaveAFavoritePancake() {
@@ -191,7 +191,7 @@ class StackReviewTests: XCTestCase {
 // MARK: Performance test
 extension StackReviewTests {
     func testPerformanceLoadDataTime() {
-        measureBlock { 
+        measure { 
             self.pancakeCollection.loadTestData()
         }
     }

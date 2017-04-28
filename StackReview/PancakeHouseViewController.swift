@@ -58,44 +58,44 @@ class PancakeHouseViewController : UIViewController {
     self.configureView()
   }
   
-  @IBAction func handleShowDetailsButtonPressed(sender: UIButton) {
-    if detailsLabel.hidden {
+  @IBAction func handleShowDetailsButtonPressed(_ sender: UIButton) {
+    if detailsLabel.isHidden {
       animateView(detailsLabel, toHidden: false)
-      showDetailsButton.setTitle("Hide Details", forState: .Normal)
+      showDetailsButton.setTitle("Hide Details", for: UIControlState())
     } else {
       animateView(detailsLabel, toHidden: true)
-      showDetailsButton.setTitle("Show Details", forState: .Normal)
+      showDetailsButton.setTitle("Show Details", for: UIControlState())
     }
   }
   
-  @IBAction func handleShowMapButtonPressed(sender: UIButton) {
-    if mapView.hidden {
+  @IBAction func handleShowMapButtonPressed(_ sender: UIButton) {
+    if mapView.isHidden {
       animateView(mapView, toHidden: false)
-      showMapButton.setTitle("Hide Map", forState: .Normal)
+      showMapButton.setTitle("Hide Map", for: UIControlState())
     } else {
       animateView(mapView, toHidden: true)
-      showMapButton.setTitle("Show Map", forState: .Normal)
+      showMapButton.setTitle("Show Map", for: UIControlState())
     }
   }
 
-  private func animateView(view: UIView, toHidden hidden: Bool) {
-    UIView.animateWithDuration(0.8, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 10.0, options: UIViewAnimationOptions(), animations: { () -> Void in
-      view.hidden = hidden
+  fileprivate func animateView(_ view: UIView, toHidden hidden: Bool) {
+    UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 10.0, options: UIViewAnimationOptions(), animations: { () -> Void in
+      view.isHidden = hidden
       }, completion: nil)
   }
   
   
-  private func centreMap(map: MKMapView?, atPosition position: CLLocationCoordinate2D?) {
+  fileprivate func centreMap(_ map: MKMapView?, atPosition position: CLLocationCoordinate2D?) {
     guard let map = map,
       let position = position else {
         return
     }
-    map.zoomEnabled = false
-    map.scrollEnabled = false
-    map.pitchEnabled = false
-    map.rotateEnabled = false
+    map.isZoomEnabled = false
+    map.isScrollEnabled = false
+    map.isPitchEnabled = false
+    map.isRotateEnabled = false
     
-    map.setCenterCoordinate(position, animated: true)
+    map.setCenter(position, animated: true)
     
     let zoomRegion = MKCoordinateRegionMakeWithDistance(position, 10000, 10000)
     map.setRegion(zoomRegion, animated: true)

@@ -23,8 +23,8 @@
 import Foundation
 
 class PancakeHouseCollection {
-  private var _pancakeHouses = [PancakeHouse]()
-  private var _favorite: PancakeHouse?
+  fileprivate var _pancakeHouses = [PancakeHouse]()
+  fileprivate var _favorite: PancakeHouse?
 
   /** Get the number of pancake houses in the collection */
   var count: Int {
@@ -53,9 +53,9 @@ class PancakeHouseCollection {
   This method returns immediately and calls the completion handler when finished, with a Boolean parameter on whether data was loaded or not.
 
   Replaces the contents of the collection with the test data on success. */
-  func loadCloudTestData(completion: (Bool -> ())?) {
-    let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(2 * Double(NSEC_PER_SEC)))
-    dispatch_after(delayTime, dispatch_get_main_queue()) {
+  func loadCloudTestData(_ completion: ((Bool) -> ())?) {
+    let delayTime = DispatchTime.now() + Double(Int64(2 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+    DispatchQueue.main.asyncAfter(deadline: delayTime) {
       guard self.isCloudCollection else {
         completion?(false)
         return
@@ -85,7 +85,7 @@ class PancakeHouseCollection {
   }
 
   /** Checks if the passed-in pancake house is the favorite */
-  func isFavorite(pancakeHouse: PancakeHouse) -> Bool {
+  func isFavorite(_ pancakeHouse: PancakeHouse) -> Bool {
     guard let currentFavorite = favorite else {
       return false
     }
@@ -94,17 +94,17 @@ class PancakeHouseCollection {
   }
 
   /** Add a new pancake house to the collection. */
-  func addPancakeHouse(pancakeHouse: PancakeHouse) {
+  func addPancakeHouse(_ pancakeHouse: PancakeHouse) {
     _pancakeHouses.append(pancakeHouse)
   }
 
   /** Remove a pancake house from the collection. If it's the current favorite, doesn't remove it. */
-  func removePancakeHouse(pancakeHouse: PancakeHouse) {
+  func removePancakeHouse(_ pancakeHouse: PancakeHouse) {
     if isFavorite(pancakeHouse){
         return
     }
-    if let index = _pancakeHouses.indexOf(pancakeHouse) {
-      _pancakeHouses.removeAtIndex(index)
+    if let index = _pancakeHouses.index(of: pancakeHouse) {
+      _pancakeHouses.remove(at: index)
     }
   }
 
